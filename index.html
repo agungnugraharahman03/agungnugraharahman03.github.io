@@ -7,6 +7,9 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <!-- Sound effect for button click -->
+    <audio id="buttonSound" src="minecraft-sound-effect.mp3"></audio>
+
     <div class="container" id="titleContainer">
         <h1>Selamat Datang di Quiz Ekonomi</h1>
         <div class="input-container">
@@ -91,6 +94,12 @@
                 alert("Silakan masukkan nama dan kelas terlebih dahulu.");
                 return;
             }
+            
+            const buttonSound = document.getElementById("buttonSound");
+            buttonSound.play().catch(error => {
+                // Handle the error here (e.g., show a play button for manual start)
+                console.error("Sound effect error: ", error);
+            });
 
             const titleContainer = document.getElementById("titleContainer");
             const quizContainer = document.getElementById("quizContainer");
