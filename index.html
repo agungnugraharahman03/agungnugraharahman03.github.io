@@ -41,20 +41,57 @@
     <script>
         let score = 0;
         let currentQuestion = 0;
+        let playerName = "";
+        let playerClass = "";
 
         const questions = [
             {
-                question: "Pertumbuhan ekonomi diukur dengan?",
+                question: "Nomor 1<br><br>Tanggal 1 Agustus Pemilik menginvestasikan uang tunai Rp30.000.000 dan peralatan Rp15.000.000.<br><br>Kas (harta) bertambah Rp30.000.000<br>Peralatan (harta)bertambah Rp15.000.000<br>Modal bertambah Rp45.000.000<br><br>",
                 correctAnswer: "true"
             },
             {
-                question: "Inflasi menyebabkan harga barang dan jasa menjadi murah.",
+                question: "Nomor 2<br><br>Tanggal 5 Agustus Perusahaan membeli laptop Rp5.000.000  tunai.<br><br>Peralatan (harta) bertambah Rp5.000.000<br>Kas (harta) berkurang Rp5.000.000<br><br>",
+                correctAnswer: "true"
+            },
+            {
+                question: "Nomor 3<br><br>Tanggal 7 Agustus perusahaan membeli kertas HVS kepada Toko Cahaya, Rp3.000.000 dibayar tunai Rp1.000.000 sisanya bulan depan.<br><br>Perlengkapan (harta) bertambah Rp3.000.000<br>Kas (harta) berkurang Rp1.000.000<br>Utang bertambah Rp1.200.000<br><br>",
                 correctAnswer: "false"
             },
-            // Tambahkan pertanyaan dan jawaban di sini sesuai kebutuhan
+            {
+                question: "Nomor 4<br><br>Tanggal 10 Agustus perusahaan menerima hasil pemeriksaan laporan seorang langganan Rp3.000.000.<br><br>Kas (harta)bertambah Rp3.000.000<br>Pendapatan (modal) bertambah Rp3.000.000<br><br>",
+                correctAnswer: "true"
+            },
+            {
+                question: "Nomor 5<br><br>Tanggal 12 Agustus Perusahaan membayar listrik Rp200.000.<br><br>Beban listrik (modal) berkurang Rp370.000<br>Kas (harta) berkurang Rp400.000<br><br>",
+                correctAnswer: "false"
+            },
+            {
+                question: "Nomor 6<br><br>Tanggal 17 Agustus persahaan membayar utang kepada Toko Cahaya Rp1.000.000.<br><br>Utang berkurang Rp1.000.000<br>Kas (harta) berkurang Rp1.000.000<br><br>",
+                correctAnswer: "false"
+            },
+            {
+                question: "Nomor 7<br><br>Tanggal 20 Agustus Pemilik mengambil uang untuk keperluan pribadi Rp800.000.<br><br>Prive (modal) berkurang Rp800.000<br>Kas (harta) berkurang Rp800.000<br><br>",
+                correctAnswer: "true"
+            },
+            {
+                question: "Nomor 8<br><br>Tanggal 30 Agustus Perusahaan membayar gaji karyawan Rp5.000.000.<br><br>Beban gaji (modal) berkurang Rp5.000.000<br>Kas (harta) berkurang Rp5.000.000<br><br>",
+                correctAnswer: "false"
+            },
+            
         ];
 
         function startQuiz() {
+            const nameInput = document.getElementById("name");
+            const classInput = document.getElementById("class");
+
+            playerName = nameInput.value.trim();
+            playerClass = classInput.value.trim();
+
+            if (playerName === "" || playerClass === "") {
+                alert("Silakan masukkan nama dan kelas terlebih dahulu.");
+                return;
+            }
+
             const titleContainer = document.getElementById("titleContainer");
             const quizContainer = document.getElementById("quizContainer");
             titleContainer.style.display = "none";
@@ -65,11 +102,15 @@
         function showQuestion() {
             const questionContainer = document.getElementById("question");
             const optionsContainer = document.querySelector(".options");
-            const answerInput = document.getElementById("answer");
+            const answerInputs = document.querySelectorAll("input[name='answer']");
 
             if (currentQuestion < questions.length) {
-                questionContainer.textContent = questions[currentQuestion].question;
-                answerInput.value = "";
+                questionContainer.innerHTML = questions[currentQuestion].question;
+
+                // Hapus seleksi jawaban sebelumnya agar pemain harus memilih kembali
+                answerInputs.forEach(input => {
+                    input.checked = false;
+                });
             } else {
                 // Tampilkan skor akhir jika pertanyaan sudah habis
                 questionContainer.textContent = "Quiz selesai! Skor akhir Anda: " + score;
@@ -84,12 +125,18 @@
                 const correctAnswer = questions[currentQuestion].correctAnswer;
                 if (userAnswer === correctAnswer) {
                     score++;
+                    updateScore();
                 }
                 currentQuestion++;
                 showQuestion();
             } else {
                 alert("Anda harus memilih jawaban terlebih dahulu.");
             }
+        }
+
+        function updateScore() {
+            const scoreElement = document.getElementById("score");
+            scoreElement.textContent = "Skor: " + score;
         }
     </script>
 </body>

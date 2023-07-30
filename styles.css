@@ -11,106 +11,214 @@ body {
     line-height: 1.5; /* Line spacing 1,5 */
 }
 
-.background {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-image: url('path_to_minecraft.gif'); /* Ganti 'path_to_minecraft.gif' dengan URL gambar Minecraft bergerak */
-    background-size: cover;
-    z-index: -1;
-    animation: slideBackground 20s linear infinite; /* Atur kecepatan gerakan background (20s untuk contoh ini) */
-}
+@media only screen and (min-width: 769px){
 
-.background1 {
-    position: fixed;
-    top: 6%;
-    left: 13%;
-    transform: translate(-100%, -100%) scale(1); /* Menengahkan .background1 dan mengatur skala awal */
-    width: 75%;
-    height: 10%;
-    background-image: url('minecraft-image.png'); /* Ganti 'path_to_minecraft.gif' dengan URL gambar Minecraft */
-    background-size: cover;
-    z-index: -1;
-    animation: zoomAnimation 7s infinite alternate; /* Atur animasi zoom pada gambar */
-}
+    .container {
+        max-width: 400px;
+        margin: 0 auto;
+        padding: 20px;
+        border: 3px solid #000;
+        background-color: #fff;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        line-height: 1.5; /* Line spacing 1,5 */
+    }
 
-.background2 {
-    position: fixed;
-    top: 18%;
-    left: 27%;
-    transform: translate(-100%, -100%) scale(1); 
-    width: 47%;
-    height: 6%;
-    background-image: url('minecraft-image-1.png'); 
-    background-size: 700px;
-    z-index: -1;
-    animation: zoomAnimation 7s infinite alternate; /* Atur animasi zoom pada gambar */
-}
+    h1 {
+        margin-bottom: 20px;
+        font-size: 30px;
+        font-family: 'Rockwell', cursive;
+        background: linear-gradient(45deg, #ff0000, #ff9900, #ffff00, #33cc33, #3366ff, #9933cc, #ff33cc);
+        background-size: 600% 600%;
+        -webkit-background-clip: text;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+        -webkit-text-stroke: 1px #000; /* Add text-stroke effect to the gradient text */
+        -webkit-text-fill-color: transparent;
+        animation: gradientAnimation 15s infinite;
+        line-height: 1.5; /* Line spacing 1,5 */
+        margin-bottom: 20px; 
+    }
 
-.container {
-    max-width: 400px;
-    margin: 0 auto;
-    padding: 20px;
-    border: 3px solid #000;
-    background-color: #fff;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    line-height: 1.5; /* Line spacing 1,5 */
-}
+    .input-container {
+        margin-bottom: 10px;
+    }
 
-h1 {
-    margin-bottom: 20px;
-    font-size: 30px;
-    font-family: 'Rockwell', cursive;
-    background: linear-gradient(45deg, #ff0000, #ff9900, #ffff00, #33cc33, #3366ff, #9933cc, #ff33cc);
-    background-size: 600% 600%;
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
-    -webkit-text-stroke: 1px #000; /* Add text-stroke effect to the gradient text */
-    -webkit-text-fill-color: transparent;
-    animation: gradientAnimation 15s infinite;
-    line-height: 1.5; /* Line spacing 1,5 */
-    margin-bottom: 20px; 
-}
+    input[type="text"] {
+        width: 70%;
+        padding: 10px;
+        margin: 7px 0;
+        border: 2px solid #00eaff;
+        border-radius: 5px;
+        ::placeholder { /* Ukuran placeholder */
+            font-size: 14px;
+        }
+    }
 
-.input-container {
-    margin-bottom: 10px;
-}
+    button {
+        padding: 10px 20px;
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-weight: bold;
+        transition: background-color 0.2s ease;
+    }
 
-input[type="text"] {
-    width: 70%;
-    padding: 10px;
-    margin: 7px 0;
-    border: 2px solid #00eaff;
-    border-radius: 5px;
-    ::placeholder { /* Ukuran placeholder */
-        font-size: 14px;
+    button:hover {
+        animation: shakeAnimation 0.5s infinite, colorChangeAnimation 1s infinite, zoomAnimation 0.5s infinite;
+        }
+
+    #score {
+        font-size: 18px;
+        font-weight: bold;
+        margin-top: 10px;
+        line-height: 1.5; /* Line spacing 1,5 */
+    }
+
+    .background {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-image: url('path_to_minecraft.gif'); /* Ganti 'path_to_minecraft.gif' dengan URL gambar Minecraft bergerak */
+        background-size: cover;
+        z-index: -1;
+        animation: slideBackground 20s linear infinite; /* Atur kecepatan gerakan background (20s untuk contoh ini) */
+    }
+    
+    .background1 {
+        position: fixed;
+        top: 6%;
+        left: 13%;
+        transform: translate(-100%, -100%) scale(1); /* Menengahkan .background1 dan mengatur skala awal */
+        width: 75%;
+        height: 10%;
+        background-image: url('minecraft-image.png'); /* Ganti 'path_to_minecraft.gif' dengan URL gambar Minecraft */
+        background-size: cover;
+        z-index: -1;
+        animation: zoomAnimation 7s infinite alternate; /* Atur animasi zoom pada gambar */
+    }
+    
+    .background2 {
+        position: fixed;
+        top: 18%;
+        left: 27%;
+        transform: translate(-100%, -100%) scale(1); 
+        width: 47%;
+        height: 6%;
+        background-image: url('minecraft-image-1.png'); 
+        background-size: 700px;
+        z-index: -1;
+        animation: zoomAnimation 7s infinite alternate; /* Atur animasi zoom pada gambar */
     }
 }
 
-button {
-    padding: 10px 20px;
-    background-color: #007bff;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-weight: bold;
-    transition: background-color 0.2s ease;
-}
+@media only screen and (max-width: 768px){
 
-button:hover {
-    animation: shakeAnimation 0.5s infinite, colorChangeAnimation 1s infinite, zoomAnimation 0.5s infinite;
-}
+    .container {
+        max-width: 400px;
+        margin: 0 auto;
+        padding: 20px;
+        border: 3px solid #000;
+        background-color: #fff;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        line-height: 1.5; /* Line spacing 1,5 */
+    }
 
-#score {
-    font-size: 18px;
-    font-weight: bold;
-    margin-top: 10px;
-    line-height: 1.5; /* Line spacing 1,5 */
+    h1 {
+        margin-bottom: 20px;
+        font-size: 30px;
+        font-family: 'Rockwell', cursive;
+        background: linear-gradient(45deg, #ff0000, #ff9900, #ffff00, #33cc33, #3366ff, #9933cc, #ff33cc);
+        background-size: 600% 600%;
+        -webkit-background-clip: text;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+        -webkit-text-stroke: 1px #000; /* Add text-stroke effect to the gradient text */
+        -webkit-text-fill-color: transparent;
+        animation: gradientAnimation 15s infinite;
+        line-height: 1.5; /* Line spacing 1,5 */
+        margin-bottom: 20px; 
+    }
+
+    .input-container {
+        margin-bottom: 10px;
+    }
+
+    input[type="text"] {
+        width: 70%;
+        padding: 10px;
+        margin: 7px 0;
+        border: 2px solid #00eaff;
+        border-radius: 5px;
+        ::placeholder { /* Ukuran placeholder */
+            font-size: 14px;
+        }
+    }
+
+    button {
+        padding: 10px 20px;
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-weight: bold;
+        transition: background-color 0.2s ease;
+    }
+
+    button:hover {
+        animation: shakeAnimation 0.5s infinite, colorChangeAnimation 1s infinite, zoomAnimation 0.5s infinite;
+        }
+
+    #score {
+        font-size: 18px;
+        font-weight: bold;
+        margin-top: 10px;
+        line-height: 1.5; /* Line spacing 1,5 */
+    }
+
+    .background {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-image: url('path_to_minecraft.gif'); /* Ganti 'path_to_minecraft.gif' dengan URL gambar Minecraft bergerak */
+        background-size: cover;
+        z-index: -1;
+        animation: slideBackground 20s linear infinite; /* Atur kecepatan gerakan background (20s untuk contoh ini) */
+    }
+    
+    .background1 {
+        position: fixed;
+        top: 22%;
+        left: 8%;
+        transform: translate(-100%, -100%) scale(1); /* Menengahkan .background1 dan mengatur skala awal */
+        width: 85%;
+        height: 2.5%;
+        background-image: url('minecraft-image.png'); /* Ganti 'path_to_minecraft.gif' dengan URL gambar Minecraft */
+        background-size: cover;
+        z-index: -1;
+        animation: zoomAnimation 7s infinite alternate; /* Atur animasi zoom pada gambar */
+    }
+    
+    .background2 {
+        position: fixed;
+        top: 25%;
+        left: 18%;
+        transform: translate(-100%, -100%) scale(1); 
+        width: 65%;
+        height: 2%;
+        background-image: url('minecraft-image-1.png'); 
+        background-size: cover;
+        z-index: -1;
+        animation: zoomAnimation 7s infinite alternate; /* Atur animasi zoom pada gambar */
+    }
 }
 
 /* Animasi menggoyangkan tombol saat dihover */
