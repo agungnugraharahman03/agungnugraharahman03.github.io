@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ekonomi</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container" id="titleContainer">
+        <h1>Selamat Datang di Quiz Ekonomi</h1>
+        <div class="input-container">
+            <label for="name">Nama:</label>
+            <input type="text" id="name" placeholder="Masukkan Nama Anda">
+        </div>
+        <div class="input-container">
+            <label for="class">Kelas:</label>
+            <input type="text" id="class" placeholder="Masukkan Kelas Anda">
+        </div>
+        <button onclick="startQuiz()">Mulai Quiz</button>
+    </div>
+
+    <div class="background"></div> <!-- Background Minecraft bergerak -->
+    <div class="background1"></div>
+    <div class="background2"></div> 
+
+    <div class="container" id="quizContainer" style="display: none;">
+        <div class="question" id="question"></div>
+        <div class="options">
+            <label>
+                <input type="radio" name="answer" value="true"> Benar
+            </label>
+            <label>
+                <input type="radio" name="answer" value="false"> Salah
+            </label>
+        </div>
+        <button onclick="checkAnswer()">Jawab</button>
+        <div id="score">Skor: 0</div>
+    </div>
+
+    <script>
+        let score = 0;
+        let currentQuestion = 0;
+
+        const questions = [
+            {
+                question: "Pertumbuhan ekonomi diukur dengan?",
+                correctAnswer: "true"
+            },
+            {
+                question: "Inflasi menyebabkan harga barang dan jasa menjadi murah.",
+                correctAnswer: "false"
+            },
+            // Tambahkan pertanyaan dan jawaban di sini sesuai kebutuhan
+        ];
+
+        function startQuiz() {
+            const titleContainer = document.getElementById("titleContainer");
+            const quizContainer = document.getElementById("quizContainer");
+            titleContainer.style.display = "none";
+            quizContainer.style.display = "block";
+            showQuestion();
+        }
+
+        function showQuestion() {
+            const questionContainer = document.getElementById("question");
+            const optionsContainer = document.querySelector(".options");
+            const answerInput = document.getElementById("answer");
+
+            if (currentQuestion < questions.length) {
+                questionContainer.textContent = questions[currentQuestion].question;
+                answerInput.value = "";
+            } else {
+                // Tampilkan skor akhir jika pertanyaan sudah habis
+                questionContainer.textContent = "Quiz selesai! Skor akhir Anda: " + score;
+                optionsContainer.style.display = "none";
+            }
+        }
+
+        function checkAnswer() {
+            const selectedOption = document.querySelector("input[name='answer']:checked");
+            if (selectedOption) {
+                const userAnswer = selectedOption.value;
+                const correctAnswer = questions[currentQuestion].correctAnswer;
+                if (userAnswer === correctAnswer) {
+                    score++;
+                }
+                currentQuestion++;
+                showQuestion();
+            } else {
+                alert("Anda harus memilih jawaban terlebih dahulu.");
+            }
+        }
+    </script>
+</body>
+</html>
